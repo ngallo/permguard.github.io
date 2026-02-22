@@ -31,7 +31,11 @@ export const Header: React.FC<IHeaderProps> = ({
       />
 
       {/* Logo */}
-      <Link href="/" className="z-50 items-center flex justify-center">
+      <Link
+        href={isDocs ? "/" : "https://www.permguard.com/"}
+        target="_self"
+        className="z-50 items-center flex justify-center"
+      >
         <img
           className="w-42.5! h-11.25! z-150"
           src="/images/header_logo.svg"
