@@ -1,0 +1,23 @@
+.language-text .token-line {
+  color: #ffffff !important;
+}
+
+.language-txt .token-line {
+  color: #ffffff !important;
+}
+
+.breadcrumbs {
+  align-items: center;
+}
+
+.breadcrumbs__item {
+  align-items: center;
+  display: flex;
+}
+
+.breadcrumbs__link {
+  height: 25px !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
