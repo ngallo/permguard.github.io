@@ -24,10 +24,7 @@ This is provided as an input to the AuthZApi.
 }
 ```
 
----
 **authorization_model/zone_id**: *a unique zone identifier distinguishes each input zone.*
-
----
 
 ## Policy Store
 
@@ -49,13 +46,9 @@ This is provided as an input to the AuthZApi.
 
 The `Permguard` decision engine loads the policy storage based on the input Kind and ID.
 
----
 **authorization_model/policy_store/type**: *the policy store type defines the storage mechanism used for policies (default `LEDGER`, options `LEDGER`).*
 
----
 **authorization_model/policy_store/id**: *the unique identifier of the policy store.*
-
----
 
 ## Principal
 
@@ -74,16 +67,11 @@ While the `Principal` and `Subject` are usually the same, there are scenarios wh
 }
 ```
 
----
 **authorization_model/principal/type**: *the principal type (default `USER`, options `USER`).*
 
----
 **authorization_model/principal/id**: *the principal identifier.*
 
----
 **authorization_model/principal/source**: *the principal identity source.*
-
----
 
 ## Entities
 
@@ -113,19 +101,13 @@ The Subject specifies the entity requesting access to a resource.
 }
 ````
 
----
 **subject/type**: *the subject type (default `USER`, options `USER`).*
 
----
 **subject/id**: *the subject identifier.*
 
----
 **subject/source**: *the subject identity source.*
 
----
 **subject/properties**: *generic properties.*
-
----
 
 ## Resources
 
@@ -147,16 +129,11 @@ The `Resource` specifies the entity requesting access to a resource.
 }
 ````
 
----
 **resource/type**: *the resource type.*
 
----
 **resource/id**: *the resource identifier.*
 
----
 **resource/properties**: *generic properties.*
-
----
 
 ## Action
 
@@ -176,13 +153,9 @@ The `Action` specifies the entity requesting access to a action.
 }
 ````
 
----
 **action/type**: *the action type.*
 
----
 **action/properties**: *generic properties.*
-
----
 
 ## Context
 
@@ -196,7 +169,4 @@ The `Context` object is a set of attributes that represent environmental or cont
 }
 ````
 
----
 **context**: *generic properties.*
-
----

@@ -41,13 +41,9 @@ The `Entities` object is a `set of attributes` that represent policy's entities.
 }
 ```
 
----
 **authorization_model/entities/schema**: *the schema type (default `CEDAR`, options `CEDAR`).*
 
----
 **authorization_model/entities/items**: *items has to match the `CEDAR` entities structure.*
-
----
 
 ## Subject
 
