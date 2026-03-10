@@ -80,7 +80,7 @@
 }
 
 .image-zoom-caption strong {
-  color: #d53ec6;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
 }
 
