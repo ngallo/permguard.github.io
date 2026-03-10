@@ -1,39 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 export function ScrollProgressBar() {
-  const [scrollPercent, setScrollPercent] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleScroll() {
+    let rafId: number;
+
+    function updateProgress() {
       const scrollTop = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
       if (docHeight <= 0) {
-        setScrollPercent(0);
+        if (barRef.current) barRef.current.style.width = "0%";
         return;
       }
       const percent = Math.min((scrollTop / docHeight) * 100, 100);
-      setScrollPercent(percent);
+      if (barRef.current) {
+        barRef.current.style.width = `${percent}%`;
+      }
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    function onScroll() {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateProgress);
+    }
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateProgress();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
     <div
       className="scroll-progress-track"
       role="progressbar"
-      aria-valuenow={Math.round(scrollPercent)}
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      <div
-        className="scroll-progress-bar"
-        style={{ width: `${scrollPercent}%` }}
-      />
+      <div ref={barRef} className="scroll-progress-bar" style={{ width: "0%" }} />
     </div>
   );
 }

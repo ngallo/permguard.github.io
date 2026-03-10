@@ -307,8 +307,26 @@ pre code.hljs {
   height: 100%;
   background: linear-gradient(90deg, #d53ec6 0%, #f05c80 40%, #cc34df 100%);
   border-radius: 0 2px 2px 0;
-  transition: width 80ms linear;
+  will-change: width;
   box-shadow: 0 0 8px rgba(213, 62, 198, 0.6), 0 0 20px rgba(213, 62, 198, 0.3);
+  position: relative;
+}
+
+/* Glowing dot at the tip of the progress bar */
+.scroll-progress-bar::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f05c80;
+  box-shadow:
+    0 0 4px 1px rgba(240, 92, 128, 0.8),
+    0 0 10px 3px rgba(213, 62, 198, 0.5),
+    0 0 18px 5px rgba(213, 62, 198, 0.2);
 }
 
 /* ======================================================
@@ -396,25 +414,53 @@ pre[class*="language-"]::before {
 }
 
 /* ======================================================
-   SUBTLE TABLE ENHANCEMENTS
+   TECHY TABLE ENHANCEMENTS
    ====================================================== */
 table {
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 10px !important;
   overflow: hidden;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
 table thead tr {
-  background: rgba(213, 62, 198, 0.04) !important;
-  border-bottom: 1px solid rgba(213, 62, 198, 0.12) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(213, 62, 198, 0.06) 0%,
+    rgba(100, 140, 255, 0.04) 100%
+  ) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 table thead th {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  position: relative;
+}
+
+table thead th::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(213, 62, 198, 0.12) 30%,
+    rgba(100, 180, 255, 0.1) 70%,
+    transparent
+  );
 }
 
 table tbody tr {
@@ -423,5 +469,353 @@ table tbody tr {
 }
 
 table tbody tr:hover {
+  background: rgba(213, 62, 198, 0.04) !important;
+}
+
+table tbody td {
+  padding: 0.65rem 1rem !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.88rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Inline code inside table cells — monospace techy look */
+table td code {
+  background: rgba(213, 62, 198, 0.08) !important;
+  border: 1px solid rgba(213, 62, 198, 0.15) !important;
+  color: #e8a0e0 !important;
+  font-size: 0.8rem !important;
+  padding: 0.15em 0.45em !important;
+  border-radius: 4px;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, monospace;
+}
+
+/* ======================================================
+   ADMONITION / ALERT ENHANCEMENTS (techy glassmorphism)
+   ====================================================== */
+.alert {
+  border-radius: 8px !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.alert::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    transparent
+  );
+}
+
+.alert--info {
+  background: rgba(56, 152, 236, 0.06) !important;
+  border-left: 3px solid rgba(56, 152, 236, 0.5) !important;
+}
+
+.alert--warning {
+  background: rgba(230, 167, 50, 0.06) !important;
+  border-left: 3px solid rgba(230, 167, 50, 0.5) !important;
+}
+
+.alert--danger {
+  background: rgba(230, 60, 60, 0.06) !important;
+  border-left: 3px solid rgba(230, 60, 60, 0.5) !important;
+}
+
+.alert--success {
+  background: rgba(50, 200, 100, 0.06) !important;
+  border-left: 3px solid rgba(50, 200, 100, 0.5) !important;
+}
+
+.alert--secondary {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-left: 3px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ======================================================
+   INLINE CODE STYLING (techy monospace)
+   ====================================================== */
+:not(pre) > code {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: 0.88em;
+  color: #e0e0e4 !important;
+  font-weight: 500;
+}
+
+/* ======================================================
+   HEADING ANCHOR LINKS (techy hover effect)
+   ====================================================== */
+.anchor.anchorWithStickyNavbar::before {
+  display: block;
+  content: "";
+  height: calc(var(--ifm-navbar-height) + 0.5rem);
+  margin-top: calc(-1 * (var(--ifm-navbar-height) + 0.5rem));
+}
+
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+}
+
+.hash-link {
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease !important;
+  color: rgba(213, 62, 198, 0.5) !important;
+}
+
+h1:hover .hash-link,
+h2:hover .hash-link,
+h3:hover .hash-link,
+h4:hover .hash-link,
+h5:hover .hash-link,
+h6:hover .hash-link {
+  opacity: 1;
+  color: #d53ec6 !important;
+}
+
+/* ======================================================
+   PAGINATION BUTTONS (techy glassmorphism)
+   ====================================================== */
+.pagination-nav__link {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease !important;
+  padding: 1rem 1.25rem !important;
+}
+
+.pagination-nav__link:hover {
+  background: rgba(213, 62, 198, 0.04) !important;
+  border-color: rgba(213, 62, 198, 0.15) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.35) !important;
+  font-weight: 500;
+}
+
+.pagination-nav__label {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 600;
+}
+
+.pagination-nav__link:hover .pagination-nav__label {
+  color: #d53ec6 !important;
+}
+
+/* ======================================================
+   TOC (TABLE OF CONTENTS) ENHANCEMENTS
+   ====================================================== */
+.table-of-contents__link {
+  color: rgba(255, 255, 255, 0.4) !important;
+  transition: color 0.15s ease, padding-left 0.15s ease !important;
+  font-size: 0.82rem;
+}
+
+.table-of-contents__link:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link--active:hover {
+  color: #d53ec6 !important;
+  font-weight: 500;
+}
+
+.table-of-contents__left-border {
+  border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ======================================================
+   SMOOTH SCROLL
+   ====================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ======================================================
+   BLOCKQUOTE STYLING (techy)
+   ====================================================== */
+blockquote {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-left: 3px solid rgba(213, 62, 198, 0.4) !important;
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1.2rem !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-style: italic;
+  position: relative;
+}
+
+blockquote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #d53ec6, #f05c80);
+  border-radius: 3px 0 0 3px;
+}
+
+/* ======================================================
+   HR / DIVIDER STYLING
+   ====================================================== */
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(213, 62, 198, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 80%,
+    transparent
+  ) !important;
+  margin: 2rem 0 !important;
+}
+
+/* ======================================================
+   LINK STYLING (techy underline)
+   ====================================================== */
+article a:not(.hash-link):not(.pagination-nav__link):not(.breadcrumbs__link) {
+  color: #d53ec6 !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(rgba(213, 62, 198, 0.3), rgba(213, 62, 198, 0.3));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease !important;
+}
+
+article a:not(.hash-link):not(.pagination-nav__link):not(.breadcrumbs__link):hover {
+  background-size: 100% 1px;
+}
+
+/* ======================================================
+   IMAGE / DIAGRAM ENHANCEMENTS
+   ====================================================== */
+article img:not(.navbar__logo img) {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+article img:not(.navbar__logo img):hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: scale(1.005);
+}
+
+/* ======================================================
+   DOC CATEGORY CARDS (generated-index) — techy style
+   ====================================================== */
+.card {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(213, 62, 198, 0.1) 50%,
+    rgba(255, 255, 255, 0.06) 70%,
+    transparent
+  );
+}
+
+.card:hover {
   background: rgba(213, 62, 198, 0.03) !important;
+  border-color: rgba(213, 62, 198, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(213, 62, 198, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Style the card title — hide default emoji, show title inline with techy icon */
+.card h2[class*="cardTitle"] {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Techy icon + title via ::before and ::after */
+.card h2[class*="cardTitle"]::before {
+  content: "›";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  background: rgba(213, 62, 198, 0.1);
+  border: 1px solid rgba(213, 62, 198, 0.2);
+  color: #d53ec6;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: monospace;
+  line-height: 1;
+}
+
+.card h2[class*="cardTitle"]::after {
+  content: attr(title);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+.card:hover h2[class*="cardTitle"]::before {
+  background: rgba(213, 62, 198, 0.15);
+  border-color: rgba(213, 62, 198, 0.3);
+  box-shadow: 0 0 8px rgba(213, 62, 198, 0.2);
+}
+
+.card:hover h2[class*="cardTitle"]::after {
+  color: #d53ec6;
+}
+
+/* Card description text */
+.card p {
+  color: rgba(255, 255, 255, 0.45) !important;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
