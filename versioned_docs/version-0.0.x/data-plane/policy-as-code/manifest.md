@@ -20,7 +20,7 @@ Below is an example of an `AuthZManifest`:
         "license": "Apache-2.0"
     },
     "runtimes": {
-        "cedar-community": {
+        "cedar": {
             "language": {
                 "name": "cedar",
                 "version": ">=0.0.0"
@@ -36,7 +36,7 @@ Below is an example of an `AuthZManifest`:
         {
             "partitions": {
                 "/": {
-                    "runtime": "cedar-community",
+                    "runtime": "cedar",
                     "schema": false
                 }
             }
@@ -52,7 +52,7 @@ This section defines the metadata of the **authorization model**.
 ## **Runtimes**
 
 This section defines the available runtimes required by the **authorization model**.
-Each runtime is identified by an arbitrary key — for example `cedar-community` — and is associated with a specific language and engine.
+Each runtime is identified by an arbitrary key — for example `cedar` — and is associated with a specific language and engine.
 
 Version constraints follow **semver range** semantics:
 
