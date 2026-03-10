@@ -102,14 +102,14 @@
   right: 10px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: linear-gradient(135deg, rgba(213, 62, 198, 0.85), rgba(240, 92, 128, 0.85));
   color: #fff;
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 3px 10px 3px 7px;
+  padding: 6px 14px 6px 10px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   pointer-events: none;

@@ -797,12 +797,6 @@ article a:not(.hash-link):not(.pagination-nav__link):not(.breadcrumbs__link):hov
 article img:not(.navbar__logo img) {
   border-radius: 8px;
   border: none;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-article img:not(.navbar__logo img):hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transform: scale(1.005);
 }
 
 /* ======================================================
