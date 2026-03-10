@@ -1,7 +1,7 @@
 ---
 id: schema
 title: Cedar Schema
-sidebar_label: Cedar Schema
+sidebar_label: Schema
 sidebar_position: 4
 description: This section provides instructions for using the Cedar Schema.
 ---

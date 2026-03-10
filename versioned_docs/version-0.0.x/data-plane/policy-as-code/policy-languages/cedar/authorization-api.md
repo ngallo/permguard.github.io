@@ -1,7 +1,7 @@
 ---
 id: authorization-api
 title: Cedar Authorization API
-sidebar_label: Cedar Authorization API
+sidebar_label: Authorization API
 sidebar_position: 1
 description: This section provides instructions for using the Cedar Authorization API.
 ---

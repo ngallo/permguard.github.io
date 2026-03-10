@@ -1,7 +1,7 @@
 ---
 id: manifest
 title: Cedar Manifest
-sidebar_label: Cedar Manifest
+sidebar_label: Manifest
 sidebar_position: 2
 description: This section provides instructions for using the Cedar Manifest.
 ---
