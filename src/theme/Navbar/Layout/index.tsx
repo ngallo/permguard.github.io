@@ -8,6 +8,7 @@ import {
 import { translate } from "@docusaurus/Translate";
 import NavbarMobileSidebar from "@theme/Navbar/MobileSidebar";
 import type { Props } from "@theme/Navbar/Layout";
+import { ScrollProgressBar } from "@site/src/components/shared/ScrollProgressBar";
 
 import styles from "./styles.module.css";
 
@@ -50,6 +51,7 @@ export default function NavbarLayout({ children }: Props): ReactNode {
         },
       )}
     >
+      <ScrollProgressBar />
       {children}
       <NavbarBackdrop onClick={mobileSidebar.toggle} />
       <NavbarMobileSidebar />
