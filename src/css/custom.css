@@ -384,9 +384,9 @@ pre[class*="language-"]::before {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(100, 180, 255, 0.15) 30%,
-    rgba(130, 200, 255, 0.22) 50%,
-    rgba(100, 180, 255, 0.15) 70%,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
     transparent
   );
   border-radius: 8px 8px 0 0;
