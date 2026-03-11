@@ -13,13 +13,13 @@ Usage:
   permguard init [flags]
 
 Flags:
-      --language string   specify the authz language of the workspace to initialize
-      --template string   specify the authz template of the workspace to initialize
-  -h, --help                    help for init
-      --ledger-id string        specify the ledger id
-      --manifest                create a manifest file for the workspace
-      --name string             specify the name of the workspace to initialize
-      --zone-id int             specify the zone id
+  -h, --help               help for init
+      --language string    specify the language of the workspace to initialize
+      --ledger-id string   specify the ledger id
+      --manifest           create a manifest file for the workspace
+      --name string        specify the name of the workspace to initialize
+      --template string    specify the template of the workspace to initialize
+      --zone-id int        specify the zone id
 
 Global Flags:
   -o, --output string    output format (default "terminal")
