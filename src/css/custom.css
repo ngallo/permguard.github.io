@@ -436,14 +436,15 @@ pre[class*="language-"]::before {
 }
 
 /* ======================================================
-   CODE BLOCK BUTTONS (copy, word wrap) — Permguard pink
+   CODE BLOCK BUTTONS (copy, word wrap) — Permguard violet
    ====================================================== */
 [class*="buttonGroup"] button,
 button[class*="copyButton"],
 button[class*="wordWrap"],
 [class*="codeBlockTitle"] ~ div button,
 div[class*="codeBlock"] button {
-  color: rgba(213, 62, 198, 0.55) !important;
+  color: #9ca3af !important;
+  background: transparent !important;
   transition: color 0.2s ease, background 0.2s ease !important;
 }
 
@@ -452,8 +453,19 @@ button[class*="copyButton"]:hover,
 button[class*="wordWrap"]:hover,
 [class*="codeBlockTitle"] ~ div button:hover,
 div[class*="codeBlock"] button:hover {
-  color: #d53ec6 !important;
-  background: rgba(213, 62, 198, 0.08) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Active/pressed state — solid Permguard violet */
+[class*="buttonGroup"] button[class*="active"],
+[class*="buttonGroup"] button[aria-pressed="true"],
+button[class*="wordWrap"][class*="active"],
+button[class*="wordWrap"][aria-pressed="true"],
+div[class*="codeBlock"] button[class*="active"],
+div[class*="codeBlock"] button[aria-pressed="true"] {
+  color: #ffffff !important;
+  background: #d53ec6 !important;
 }
 
 /* Code block title bar — Permguard accent */
