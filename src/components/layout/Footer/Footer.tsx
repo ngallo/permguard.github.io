@@ -95,11 +95,6 @@ export const CustomFooter: React.FC<IFooterProps> = ({ small }) => {
           <p>&copy; {new Date().getFullYear()} All rights reserved</p>
         </>
       </div>
-
-      <p className="text-[12px] italic opacity-[0.7] !tracking-[0.5px] mx-auto">
-        ✧ Language &amp; AI · written in English by the authors, polished with
-        AI ✧
-      </p>
     </footer>
   );
 };
