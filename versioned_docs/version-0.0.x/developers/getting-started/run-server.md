@@ -76,3 +76,28 @@ docker run --rm -it \
 ```
 
 In this setup, the `SQLite` database will be accessible on the host under the mounted path `./local`.
+
+## TLS Encryption
+
+By default, the server runs without encryption (`--server-tls-mode=none`). To enable TLS:
+
+```bash
+docker pull permguard/all-in-one:latest
+docker run --rm -it \
+  -p 9091:9091 \
+  -p 9092:9092 \
+  -p 9094:9094 \
+  -e PERMGUARD_SERVER_TLS_MODE="tls" \
+  permguard/all-in-one:latest
+```
+
+When `PERMGUARD_SERVER_TLS_MODE` is set to `tls` without providing certificate files, the server automatically generates self-signed certificates. The CLI must then connect using the `grpcs://` scheme:
+
+```bash
+permguard config set zap-endpoint grpcs://localhost:9091
+permguard zones list --tls-skip-verify
+```
+
+:::info
+For a complete guide on all TLS modes (none, tls, mtls, external), see the [Transport Security](../../learn/transport-security) learning resource and the [Deployment Options](../../developers/deployment/options).
+:::

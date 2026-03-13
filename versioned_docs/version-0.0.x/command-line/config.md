@@ -25,9 +25,13 @@ Flags:
   -h, --help   help for config
 
 Global Flags:
-  -o, --output string    output format (default "terminal")
-  -v, --verbose          true for verbose output
-  -w, --workdir string   workdir (default ".")
+  -o, --output string          output format (default "terminal")
+      --tls-ca-file string     path to CA certificate for server verification (PEM)
+      --tls-cert-file string   path to client certificate for mTLS (PEM)
+      --tls-key-file string    path to client private key for mTLS (PEM)
+      --tls-skip-verify        skip server certificate verification (insecure, dev only)
+  -v, --verbose                true for verbose output
+  -w, --workdir string         workdir (default ".")
 
 Use "permguard config [command] --help" for more information about a command.
 ```
@@ -120,11 +124,26 @@ output:
 
 ## Endpoints
 
-Endpoints define the connection address for each Permguard service. The endpoint value must include a scheme prefix (`grpc://`, `http://`, or `https://`) followed by `hostname:port`.
+Endpoints define the connection address for each Permguard service. The endpoint value must include a **scheme prefix** followed by `hostname:port`.
+
+The supported schemes are:
+
+| Scheme | Transport | When to use |
+|--------|-----------|-------------|
+| `grpc://` | Plaintext gRPC | Server running with `--server-tls-mode=none` (default) |
+| `grpcs://` | TLS-encrypted gRPC | Server running with `--server-tls-mode=tls`, `mtls`, or when TLS is terminated externally |
+| `http://` | Plaintext HTTP | HTTP gateway, no encryption |
+| `https://` | TLS-encrypted HTTP | HTTP gateway with TLS |
+
+:::tip
+When the server has TLS enabled, switch all endpoints from `grpc://` to `grpcs://`. If you see errors like `connection reset by peer`, it typically means the scheme does not match the server's TLS configuration.
+:::
 
 ### Set Endpoints
 
-Endpoints can be set using the following commands:
+Endpoints can be set using the following commands.
+
+**Plaintext (default, no TLS):**
 
 ```bash
 permguard config set zap-endpoint grpc://localhost:9091
@@ -136,6 +155,20 @@ permguard config set pap-endpoint grpc://localhost:9092
 
 ```bash
 permguard config set pdp-endpoint grpc://localhost:9094
+```
+
+**TLS-enabled server:**
+
+```bash
+permguard config set zap-endpoint grpcs://localhost:9091
+```
+
+```bash
+permguard config set pap-endpoint grpcs://localhost:9092
+```
+
+```bash
+permguard config set pdp-endpoint grpcs://localhost:9094
 ```
 
 ### Get Endpoints

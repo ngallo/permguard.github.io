@@ -2,7 +2,7 @@
 id: pharma-govflow
 title: PharmaGovFlow Sample
 sidebar_label: PharmaGovFlow Sample
-sidebar_position: 8
+sidebar_position: 9
 description: Learn about the PharmaGovFlow example
 ---
 

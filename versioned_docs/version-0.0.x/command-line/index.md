@@ -40,10 +40,14 @@ Available Commands:
   validate    Validate the local state for consistency and correctness
 
 Flags:
-  -h, --help             help for permguard
-  -o, --output string    output format (default "terminal")
-  -v, --verbose          true for verbose output
-  -w, --workdir string   workdir (default ".")
+  -h, --help                   help for permguard
+  -o, --output string          output format (default "terminal")
+      --tls-ca-file string     path to CA certificate for server verification (PEM)
+      --tls-cert-file string   path to client certificate for mTLS (PEM)
+      --tls-key-file string    path to client private key for mTLS (PEM)
+      --tls-skip-verify        skip server certificate verification (insecure, dev only)
+  -v, --verbose                true for verbose output
+  -w, --workdir string         workdir (default ".")
 
 Use "permguard [command] --help" for more information about a command.
 ```
@@ -72,3 +76,68 @@ To list all zones in JSON format, users can execute the following command:
 ```bash
 permguard zones list --output json
 ```
+
+## Transport Security
+
+The Permguard Server supports four **TLS modes** to secure gRPC communication between the CLI and the server. The transport security mode is configured on the **server side** and determines how clients must connect.
+
+| Mode | Description |
+|------|-------------|
+| `none` | Plaintext communication with no encryption. Suitable for local development. The CLI connects using the `grpc://` scheme. |
+| `tls` | Server-side TLS. The server presents a certificate and encrypts all traffic. The CLI connects using the `grpcs://` scheme. For self-signed or auto-generated certificates, use `--tls-skip-verify`. |
+| `mtls` | Mutual TLS. Both server and client present certificates. The CLI connects using `grpcs://` and must provide `--tls-cert-file` and `--tls-key-file`. |
+| `external` | Mutual TLS using certificates provisioned by an external authority (e.g., SPIRE/SPIFFE, HashiCorp Vault, cert-manager). The server requires `cert-file`, `key-file`, and `ca-file` — but these are automatically managed by the infrastructure. The CLI connects using `grpcs://`. |
+
+### Connecting to a Server with TLS Disabled (none)
+
+When the server runs with `--server-tls-mode=none` (the default), no encryption is applied. The CLI connects using the `grpc://` scheme:
+
+```bash
+permguard config set zap-endpoint grpc://localhost:9091
+permguard zones list
+```
+
+### Connecting to a Server with TLS Enabled (tls)
+
+When the server runs with `--server-tls-mode=tls`, traffic is encrypted. The CLI must use the `grpcs://` scheme.
+
+For servers using **auto-generated or self-signed certificates**, add `--tls-skip-verify`:
+
+```bash
+permguard config set zap-endpoint grpcs://localhost:9091
+permguard zones list --tls-skip-verify
+```
+
+For servers using **CA-signed certificates**, provide the CA file:
+
+```bash
+permguard zones list --tls-ca-file /path/to/ca.pem
+```
+
+### Connecting to a Server with mTLS Enabled (mtls)
+
+When the server runs with `--server-tls-mode=mtls`, both sides must authenticate. The CLI provides its client certificate and key:
+
+```bash
+permguard config set zap-endpoint grpcs://localhost:9091
+permguard zones list \
+  --tls-cert-file /path/to/client-cert.pem \
+  --tls-key-file /path/to/client-key.pem \
+  --tls-ca-file /path/to/ca.pem
+```
+
+### Connecting to a Server with External TLS (external)
+
+When the server runs with `--server-tls-mode=external`, it performs mutual TLS using certificates provisioned by an external authority (e.g., SPIRE SVIDs, Vault-injected certs). The server requires `cert-file`, `key-file`, and `ca-file`, but the infrastructure manages them. The CLI connects using `grpcs://` and provides the trust bundle:
+
+```bash
+permguard config set zap-endpoint grpcs://permguard.example.com:9091
+permguard zones list \
+  --tls-cert-file /path/to/client-svid.pem \
+  --tls-key-file /path/to/client-svid-key.pem \
+  --tls-ca-file /path/to/bundle.pem
+```
+
+:::info
+If you see an error like `connection reset by peer` or `error reading server preface`, it usually means you are connecting with `grpc://` to a TLS-enabled server. Switch to `grpcs://` and, if needed, add `--tls-skip-verify`.
+:::

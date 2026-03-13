@@ -16,9 +16,13 @@ Flags:
   -h, --help   help for pull
 
 Global Flags:
-  -o, --output string    output format (default "terminal")
-  -v, --verbose          true for verbose output
-  -w, --workdir string   workdir (default ".")
+  -o, --output string          output format (default "terminal")
+      --tls-ca-file string     path to CA certificate for server verification (PEM)
+      --tls-cert-file string   path to client certificate for mTLS (PEM)
+      --tls-key-file string    path to client private key for mTLS (PEM)
+      --tls-skip-verify        skip server certificate verification (insecure, dev only)
+  -v, --verbose                true for verbose output
+  -w, --workdir string         workdir (default ".")
 ```
 
 :::caution
