@@ -13,20 +13,21 @@ Usage:
   permguard clone [flags]
 
 Flags:
-      --zap int   zap port (default 9091)
-  -h, --help      help for clone
-      --pap int   pap port (default 9092)
+  -h, --help            help for clone
+      --pap int         specify the port number for the PAP (default 9092)
+      --scheme string   specify the gRPC scheme: 'grpc' (plaintext) or 'grpcs' (TLS)
+      --zap int         specify the port number for the ZAP (default 9091)
 
 Global Flags:
-  -o, --output string          output format (default "terminal")
+  -o, --output string            output format (default "terminal")
       --spiffe-enabled           enable native SPIFFE mTLS via Workload API
       --spiffe-endpoint string   SPIFFE Workload API socket path (defaults to SPIFFE_ENDPOINT_SOCKET env)
       --tls-ca-file string       path to CA certificate for server verification (PEM)
-      --tls-cert-file string   path to client certificate for mTLS (PEM)
-      --tls-key-file string    path to client private key for mTLS (PEM)
-      --tls-skip-verify        skip server certificate verification (insecure, dev only)
-  -v, --verbose                true for verbose output
-  -w, --workdir string         workdir (default ".")
+      --tls-cert-file string     path to client certificate for mTLS (PEM)
+      --tls-key-file string      path to client private key for mTLS (PEM)
+      --tls-skip-verify          skip server certificate verification (insecure, dev only)
+  -v, --verbose                  true for verbose output
+  -w, --workdir string           workdir (default ".")
 ```
 
 :::caution

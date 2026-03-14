@@ -13,7 +13,7 @@ Permguard supports multiple **transport security modes** to protect gRPC communi
 The server's TLS mode is set at startup with the `--server-tls-mode` flag (or the `PERMGUARD_SERVER_TLS_MODE` environment variable). The CLI must then connect using the matching scheme and flags.
 
 | Server Mode | Server Flag | CLI Scheme | Encryption | Identity Verification |
-|-------------|-------------|------------|------------|----------------------|
+| ----------- | ----------- | ---------- | ---------- | --------------------- |
 | **none** | `--server-tls-mode=none` | `grpc://` | None | None |
 | **tls** | `--server-tls-mode=tls` | `grpcs://` | Server-side TLS | Server only |
 | **mtls** | `--server-tls-mode=mtls` | `grpcs://` | Mutual TLS | Server + Client |
@@ -112,7 +112,7 @@ permguard zones list
 ### Server Flags Reference (tls)
 
 | Flag | Environment Variable | Description |
-|------|---------------------|-------------|
+| ---- | -------------------- | ----------- |
 | `--server-tls-mode` | `PERMGUARD_SERVER_TLS_MODE` | Set to `tls` |
 | `--server-tls-cert-file` | `PERMGUARD_SERVER_TLS_CERT_FILE` | Path to server certificate (PEM) |
 | `--server-tls-key-file` | `PERMGUARD_SERVER_TLS_KEY_FILE` | Path to server private key (PEM) |
@@ -122,7 +122,7 @@ permguard zones list
 
 Both server and client present certificates and verify each other. This provides the strongest transport-level authentication.
 
-### Server
+### Server Setup
 
 ```bash
 docker run --rm -it \
@@ -139,7 +139,7 @@ docker run --rm -it \
 
 The `--server-tls-ca-file` (or `PERMGUARD_SERVER_TLS_CA_FILE`) specifies the CA used to verify client certificates.
 
-### CLI
+### CLI Usage
 
 ```bash
 permguard config set zap-endpoint grpcs://localhost:9091
@@ -155,7 +155,7 @@ permguard zones list \
 ### Server Flags Reference (mtls)
 
 | Flag | Environment Variable | Description |
-|------|---------------------|-------------|
+| ---- | -------------------- | ----------- |
 | `--server-tls-mode` | `PERMGUARD_SERVER_TLS_MODE` | Set to `mtls` |
 | `--server-tls-cert-file` | `PERMGUARD_SERVER_TLS_CERT_FILE` | Path to server certificate (PEM) |
 | `--server-tls-key-file` | `PERMGUARD_SERVER_TLS_KEY_FILE` | Path to server private key (PEM) |
@@ -164,7 +164,7 @@ permguard zones list \
 ### CLI Flags Reference (mtls)
 
 | Flag | Description |
-|------|-------------|
+| ---- | ----------- |
 | `--tls-cert-file` | Path to client certificate (PEM) |
 | `--tls-key-file` | Path to client private key (PEM) |
 | `--tls-ca-file` | CA certificate for verifying the server (PEM) |
@@ -180,7 +180,7 @@ In this mode, the server performs **mutual TLS** using certificates provided by 
 
 The key difference from `mtls` mode is **operational, not technical**: the server still requires `cert-file`, `key-file`, and `ca-file`, but these are sourced from the infrastructure rather than managed manually.
 
-### Server
+### Server Configuration
 
 The server requires certificate paths, which point to files provisioned by the external provider:
 
@@ -222,7 +222,7 @@ containers:
         readOnly: true
 ```
 
-### CLI
+### CLI Configuration
 
 The CLI connects using `grpcs://` and provides the appropriate CA (the trust bundle from the infrastructure):
 
@@ -243,7 +243,7 @@ permguard zones list \
 ### Server Flags Reference (external)
 
 | Flag | Environment Variable | Description |
-|------|---------------------|-------------|
+| ---- | -------------------- | ----------- |
 | `--server-tls-mode` | `PERMGUARD_SERVER_TLS_MODE` | Set to `external` |
 | `--server-tls-cert-file` | `PERMGUARD_SERVER_TLS_CERT_FILE` | Path to server certificate provisioned by the external provider (PEM) |
 | `--server-tls-key-file` | `PERMGUARD_SERVER_TLS_KEY_FILE` | Path to server private key provisioned by the external provider (PEM) |
@@ -264,7 +264,7 @@ The key advantages over `external` mode are:
 - **SPIFFE ID verification** — peers are authenticated by their SPIFFE ID (URI SAN), not by hostname (DNS SAN)
 - **Automatic rotation** — certificates are renewed transparently without process restart
 
-### Server
+### Server Deployment
 
 In Kubernetes with SPIRE, the server only needs the Workload API socket mounted via CSI driver:
 
@@ -316,14 +316,14 @@ The `--spiffe-enabled` flag requires a SPIFFE Workload API to be available. When
 ### Server Flags Reference (spiffe)
 
 | Flag | Environment Variable | Description |
-|------|---------------------|-------------|
+| ---- | -------------------- | ----------- |
 | `--server-tls-mode` | `PERMGUARD_SERVER_TLS_MODE` | Set to `spiffe` |
 | `--server-tls-spiffe-socket-path` | `PERMGUARD_SERVER_TLS_SPIFFE_SOCKET_PATH` | Path to the SPIFFE Workload API socket (optional, defaults to `SPIFFE_ENDPOINT_SOCKET` env) |
 
 ### CLI Flags Reference (spiffe)
 
 | Flag | Description |
-|------|-------------|
+| ---- | ----------- |
 | `--spiffe-enabled` | Enable native SPIFFE mTLS via the Workload API |
 | `--spiffe-endpoint` | Path to the SPIFFE Workload API socket (defaults to `SPIFFE_ENDPOINT_SOCKET` env) |
 
@@ -334,7 +334,7 @@ Use `spiffe` mode for **service-to-service** communication inside the cluster. F
 ## Troubleshooting
 
 | Error | Likely Cause | Fix |
-|-------|-------------|-----|
+| ----- | ------------ | --- |
 | `connection reset by peer` | Plaintext client connecting to a TLS server | Switch endpoint to `grpcs://` |
 | `first record does not look like a TLS handshake` | TLS client connecting to a plaintext server | Switch endpoint to `grpc://` |
 | `certificate signed by unknown authority` | Server uses a self-signed or private CA certificate | Add `--tls-skip-verify` (dev) or `--tls-ca-file` (prod) |
@@ -345,11 +345,10 @@ Use `spiffe` mode for **service-to-service** communication inside the cluster. F
 
 ## Quick Reference
 
-
 ### Server Environment Variables
 
 | Variable | Default | Description |
-|----------|---------|-------------|
+| -------- | ------- | ----------- |
 | `PERMGUARD_SERVER_TLS_MODE` | `none` | TLS mode: `none`, `tls`, `mtls`, `external`, `spiffe` |
 | `PERMGUARD_SERVER_TLS_CERT_FILE` | — | Server certificate path (PEM) |
 | `PERMGUARD_SERVER_TLS_KEY_FILE` | — | Server private key path (PEM) |
@@ -360,7 +359,7 @@ Use `spiffe` mode for **service-to-service** communication inside the cluster. F
 ### CLI Flags
 
 | Flag | Description |
-|------|-------------|
+| ---- | ----------- |
 | `--tls-skip-verify` | Skip server certificate verification (dev only) |
 | `--tls-ca-file` | CA certificate for server verification (PEM) |
 | `--tls-cert-file` | Client certificate for mTLS (PEM) |
