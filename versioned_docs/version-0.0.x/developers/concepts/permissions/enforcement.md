@@ -10,7 +10,7 @@ In **Permguard**, enforcement is handled by the **Policy Enforcement Point (PEP)
 Its role is to verify whether an `identity` has permission to perform specific `actions` on `resources` within a given `namespace`.
 
 :::note
-In the [PharmaGovFlow base example](../../../learn/pharma-govflow/), the application enforces different types of permission checks.
+In the [Root base example](../../../learn/pharma-govflow/), the application enforces different types of permission checks.
 :::
 
 ## Enforcement
@@ -35,7 +35,7 @@ To enforce access control, the **PEP** queries the **Policy Decision Point (PDP)
       "items": [
         {
           "uid": {
-            "type": "PharmaGovFlow::Platform::Subscription",
+            "type": "Root::Platform::Subscription",
             "id": "e3a786fd07e24bfa95ba4341d3695ae8"
           },
           "attrs": {
@@ -55,7 +55,7 @@ To enforce access control, the **PEP** queries the **Policy Decision Point (PDP)
     }
   },
   "resource": {
-    "type": "PharmaGovFlow::Platform::Subscription",
+    "type": "Root::Platform::Subscription",
     "id": "e3a786fd07e24bfa95ba4341d3695ae8",
     "properties": {}
   },
@@ -65,13 +65,13 @@ To enforce access control, the **PEP** queries the **Policy Decision Point (PDP)
   "evaluations": [
     {
       "action": {
-        "name": "PharmaGovFlow::Platform::Action::create",
+        "name": "Root::Platform::Action::create",
         "properties": {}
       }
     },
     {
       "action": {
-        "name": "PharmaGovFlow::Platform::Action::delete",
+        "name": "Root::Platform::Action::delete",
         "properties": {}
       }
     }

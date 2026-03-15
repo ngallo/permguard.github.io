@@ -69,7 +69,7 @@ const principal = new PrincipalBuilder("amy.smith@acmecorp.com").build();
 const entities = [
   {
     uid: {
-      type: "PharmaAuthZFlow::Platform::BranchInfo",
+      type: "Root::Platform::BranchInfo",
       id: "subscription",
     },
     attrs: {
@@ -84,8 +84,8 @@ const req = new AZAtomicRequestBuilder(
   633687665465,
   "fc260e783b0c4bd6aa88eed18f57aab3",
   "platform-creator",
-  "PharmaAuthZFlow::Platform::Subscription",
-  "PharmaAuthZFlow::Platform::Action::create"
+  "Root::Platform::Subscription",
+  "Root::Platform::Action::create"
 )
   .withRequestID("1234")
   .withPrincipal(principal)
@@ -159,18 +159,18 @@ const subject = new SubjectBuilder("platform-creator")
   .build();
 
 // Create a new resource
-const resource = new ResourceBuilder("PharmaAuthZFlow::Platform::Subscription")
+const resource = new ResourceBuilder("Root::Platform::Subscription")
   .withID("e3a786fd07e24bfa95ba4341d3695ae8")
   .withProperty("isEnabled", true)
   .build();
 
 // Create actions
-const actionView = new ActionBuilder("PharmaAuthZFlow::Platform::Action::create")
+const actionView = new ActionBuilder("Root::Platform::Action::create")
   .withProperty("isEnabled", true)
   .build();
 
 const actionCreate = new ActionBuilder(
-  "PharmaAuthZFlow::Platform::Action::create"
+  "Root::Platform::Action::create"
 )
   .withProperty("isEnabled", true)
   .build();
@@ -199,7 +199,7 @@ const principal = new PrincipalBuilder("amy.smith@acmecorp.com").build();
 const entities = [
   {
     uid: {
-      type: "PharmaAuthZFlow::Platform::BranchInfo",
+      type: "Root::Platform::BranchInfo",
       id: "subscription",
     },
     attrs: {

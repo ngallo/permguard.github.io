@@ -58,7 +58,7 @@ This stores `myserver.example.com` as the server and `grpcs` as the scheme.
 The `--scheme` flag explicitly sets the scheme and **always overrides** the scheme prefix:
 
 ```bash
- permguard remote add origin grpc:myserver.example.com --scheme grpcs
+ permguard remote add origin myserver.example.com --scheme grpcs
 ```
 
 In this example, the scheme prefix `grpc:` is ignored and `grpcs` is used.

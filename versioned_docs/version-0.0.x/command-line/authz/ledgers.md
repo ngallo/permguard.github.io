@@ -46,13 +46,13 @@ The output from your current version of Permguard may differ from the example pr
 The `permguard authz ledgers create` command allows to create a ledger for the mandatory input zone and name.
 
 ```bash
-permguard authz ledgers create --zone-id 273165098782 pharmagovflow
+permguard authz ledgers create --zone-id 273165098782 root
 ```
 
 output:
 
 ```bash
-668f3771eacf4094ba8a80942ea5fd3f: pharmagovflow
+668f3771eacf4094ba8a80942ea5fd3f: root
 ```
 
 <details>
@@ -61,7 +61,7 @@ output:
   </summary>
 
 ```bash
-permguard authz ledgers create --zone-id 273165098782 pharmagovflow --output json
+permguard authz ledgers create --zone-id 273165098782 root --output json
 ```
 
 output:
@@ -74,7 +74,48 @@ output:
       "created_at": "2024-08-25T14:50:38.003Z",
       "updated_at": "2024-08-25T14:50:38.003Z",
       "zone_id": 273165098782,
-      "name": "pharmagovflow"
+      "name": "root"
+    }
+  ]
+}
+```
+
+</details>
+
+## Update a Ledger
+
+The `permguard authz ledgers update` command allows to update the name of an existing ledger.
+
+```bash
+permguard authz ledgers update --zone-id 273165098782 --ledger-id 668f3771eacf4094ba8a80942ea5fd3f v1.1
+```
+
+output:
+
+```bash
+668f3771eacf4094ba8a80942ea5fd3f: v1.1
+```
+
+<details>
+  <summary>
+    JSON Output
+  </summary>
+
+```bash
+permguard authz ledgers update --zone-id 273165098782 --ledger-id 668f3771eacf4094ba8a80942ea5fd3f v1.1 --output json
+```
+
+output:
+
+```json
+{
+  "ledgers": [
+    {
+      "ledger_id": "668f3771eacf4094ba8a80942ea5fd3f",
+      "created_at": "2024-08-25T14:50:38.003Z",
+      "updated_at": "2024-08-25T15:10:22.003Z",
+      "zone_id": 273165098782,
+      "name": "v1.1"
     }
   ]
 }
@@ -93,7 +134,7 @@ permguard authz ledgers list --zone-id 273165098782
 output:
 
 ```bash
-d02af7e50a7b462cb496aa6ddeb4275e: pharmagovflow
+d02af7e50a7b462cb496aa6ddeb4275e: root
 ```
 
 <details>

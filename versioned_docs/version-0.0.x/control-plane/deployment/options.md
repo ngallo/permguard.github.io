@@ -16,7 +16,7 @@ These options apply to the control plane.
 
 <!-- updated: added notp-max-packet-size and otel flags to match source code -->
 | Option                          | Default          | Description                                      |
-|---------------------------------|------------------|--------------------------------------------------|
+| ------------------------------- | ---------------- | ------------------------------------------------ |
 | `--server-appdata`              | `./`             | Directory used as application data               |
 | `--storage-engine-central`      | `SQLITE`         | Storage engine for central data                  |
 | `--server-notp-max-packet-size` | `16777216`       | NOTP maximum packet size in bytes (16MB)         |
@@ -28,7 +28,7 @@ These options apply to the control plane.
   <summary>SQLite Options</summary>
 
 | Option                          | Default     | Description          |
-|---------------------------------|-------------|----------------------|
+| ------------------------------- | ----------- | -------------------- |
 | `--storage-engine-sqlite-dbname`| `permguard` | SQLite database name |
 
 </details>
@@ -36,7 +36,7 @@ These options apply to the control plane.
 ### ZAP — Zone Administration Point
 
 | Option                                      | Default   | Description                                          |
-|---------------------------------------------|-----------|------------------------------------------------------|
+| ------------------------------------------- | --------- | ---------------------------------------------------- |
 | `--storage-zap-engine-central`              | `SQLITE`  | Storage engine (overrides `--storage-engine-central`)|
 | `--server-zap-data-fetch-maxpagesize`       | `10000`   | Max items per request                                |
 | `--server-zap-data-enable-default-creation` | `false`   | Enables default entity creation                      |
@@ -45,7 +45,7 @@ These options apply to the control plane.
 ### PAP — Policy Administration Point
 
 | Option                                 | Default   | Description                                                                                                                                                         |
-|----------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--storage-pap-engine-central`         | `SQLITE`  | Storage engine (overrides `--storage-engine-central`)                                                                                                               |
 | `--server-pap-data-fetch-maxpagesize`  | `10000`   | Max items per request                                                                                                                                               |
 | `--server-pap-authstar-max-object-size`| `5242880` | Authstar max object size in bytes for push/pull (5MB)                                                                                                               |
@@ -57,7 +57,7 @@ These options apply to the control plane.
 ## Provisioners
 
 | Option                               | Default | Description               |
-|--------------------------------------|---------|---------------------------|
+| ------------------------------------ | ------- | ------------------------- |
 | `--debug`                            | `false` | Enables debug mode        |
 | `--log-level`                        | `INFO`  | Log level                 |
 | `--storage-engine-sqlite-filepath`   | `.`     | SQLite database file path |

@@ -68,7 +68,7 @@ The `--scheme` flag explicitly sets the gRPC scheme. It **always overrides** the
 
 ```bash
 # scheme prefix says grpc, but --scheme overrides to grpcs
-permguard remote add origin grpc:myserver.example.com --scheme grpcs
+permguard remote add origin myserver.example.com --scheme grpcs
 ```
 
 ### Scheme resolution order

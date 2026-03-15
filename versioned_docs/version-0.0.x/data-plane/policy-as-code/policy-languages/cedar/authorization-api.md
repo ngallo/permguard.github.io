@@ -27,7 +27,7 @@ The `Entities` object is a `set of attributes` that represent policy's entities.
       "items": [
         {
           "uid": {
-            "type": "PharmaAuthZFlow::Platform::Subscription",
+            "type": "Root::Platform::Subscription",
             "id": "e3a786fd07e24bfa95ba4341d3695ae8"
           },
           "attrs": {
@@ -50,7 +50,7 @@ The `Entities` object is a `set of attributes` that represent policy's entities.
 The `Subject` is mapped to the internal `Permguard`  subject structure for the `Cedar` policy.
 
 | TYPE       | CEDAR TYPE                           |
-|------------|--------------------------------------|
+| ---------- | ------------------------------------ |
 | USER       | Permguard::Identity::User            |
 | WORKLOAD   | Permguard::Identity::Workload        |
 | ATTRIBUTE  | Permguard::Identity::Attribute        |
@@ -71,7 +71,7 @@ The `Resource` has to satisfy the `Cedar` resource structure.
 ```cedar
 @id("platform-auditor")
 permit(
-  resource is PharmaAuthZFlow::Platform::Subscription
+  resource is Root::Platform::Subscription
 );
 ```
 
@@ -82,6 +82,6 @@ The `Action` has to satisfy the `Cedar` action structure.
 ```cedar
 @id("platform-auditor")
 permit(
-  action == PharmaAuthZFlow::Platform::Action::"view",
+  action == Root::Platform::Action::"view",
 );
 ```

@@ -22,7 +22,7 @@ Usage:
 
 Available Commands:
   apply       Apply the plan to the remote ledger
-  zone        Manage zones on the remote server
+  zones       Manage zones on the remote server
   authz       Manage ledgers on the remote server
   checkout    Check out the contents of a remote ledger to the local permguard workspace
   clone       Clone a remote ledger to the local permguard workspace
@@ -84,7 +84,7 @@ permguard zones list --output json
 The Permguard Server supports five **TLS modes** to secure gRPC communication between the CLI and the server. The transport security mode is configured on the **server side** and determines how clients must connect.
 
 | Mode | Description |
-|------|-------------|
+| ---- | ----------- |
 | `none` | Plaintext communication with no encryption. Suitable for local development. The CLI connects using the `grpc://` scheme. |
 | `tls` | Server-side TLS. The server presents a certificate and encrypts all traffic. The CLI connects using the `grpcs://` scheme. For self-signed or auto-generated certificates, use `--tls-skip-verify`. |
 | `mtls` | Mutual TLS. Both server and client present certificates. The CLI connects using `grpcs://` and must provide `--tls-cert-file` and `--tls-key-file`. |

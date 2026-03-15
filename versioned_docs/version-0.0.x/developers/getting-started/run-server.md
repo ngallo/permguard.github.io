@@ -17,7 +17,7 @@ In its simplest form, the Permguard Server runs in an `all-in-one` configuration
 - **Control Plane** — manages policies, configuration, and governance rules. Provides a unified interface for defining and distributing authorization intent.
 - **Data Plane** — evaluates incoming authorization requests and enforces permit/deny decisions locally.
 
-The default container image runs in `all-in-one` mode, making it ideal for development, testing, or simple environments.
+The all-in-one container image runs in `all-in-one` mode, making it ideal for development, testing, or simple environments.
 
 In production, enforcement can be distributed, with dedicated data-plane instances deployed near workloads — inside applications, `sidecars`, `gateways`, or `edge` components.
 

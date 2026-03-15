@@ -79,7 +79,7 @@ Here is an example of an **authorization request** and its response exchanged be
       "items": [
         {
           "uid": {
-            "type": "PharmaAuthZFlow::Platform::BranchInfo",
+            "type": "Root::Platform::BranchInfo",
             "id": "subscription"
           },
           "attrs": {
@@ -100,14 +100,14 @@ Here is an example of an **authorization request** and its response exchanged be
     }
   },
   "resource": {
-    "type": "PharmaAuthZFlow::Platform::Subscription",
+    "type": "Root::Platform::Subscription",
     "id": "e3a786fd07e24bfa95ba4341d3695ae8",
     "properties": {
       "isEnabled": true
     }
   },
   "action": {
-    "name": "PharmaAuthZFlow::Platform::Action::create",
+    "name": "Root::Platform::Action::create",
     "properties": {
       "isEnabled": true
     }

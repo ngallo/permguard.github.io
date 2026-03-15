@@ -6,7 +6,7 @@ sidebar_position: 4
 description: Command reference for the `ledger` command of the Permguard CLI.
 ---
 
-Using the `ledgers` command, it is possible to manage locally checked out ledgers.
+Using the `ledger` command, it is possible to manage locally checked out ledgers.
 
 ```text
 Usage:
@@ -44,7 +44,7 @@ output:
 ```bash
 Your workspace configured ledgers:
 
-  - *origin/273165098782/pharmagovflow
+  - *origin/273165098782/root
 
 ```
 

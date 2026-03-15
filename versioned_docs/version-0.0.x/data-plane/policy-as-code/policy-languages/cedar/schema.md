@@ -22,7 +22,7 @@ Below is a sample schema:
 
 ```yaml
 {
-    "PharmaAuthZFlow::Platform": {
+    "Root::Platform": {
       "entityTypes": {
         "Branch": {
           "shape": {

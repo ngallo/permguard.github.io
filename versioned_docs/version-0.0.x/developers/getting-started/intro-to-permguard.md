@@ -10,7 +10,7 @@ description: This section provides an introduction to Permguard.
 
 **Permguard** is a distributed authorization platform that combines **governance** and **authority** in a single system, built on `Zero Trust` principles.
 
-- **Governance** — policy-based authorization: who can do what on which resources
+- **Governance** — [ZTAuth*-compliant](https://spec.ztauthstar.com) policy-based authorization: who can do what on which resources
 - **Authority** — [PIC-compliant](https://www.pic-protocol.org) authority continuity: causal, origin-bound, monotonically restricted execution chains
 
 Permguard can be used for governance alone, or composed with authority continuity for full PIC enforcement.
@@ -24,7 +24,7 @@ Permguard can be used for governance alone, or composed with authority continuit
 Permguard is organized around three planes, each with a distinct responsibility:
 
 | Plane | Responsibility | What it does |
-|-------|---------------|--------------|
+| ----- | -------------- | ------------ |
 | **[Control Plane](../../control-plane/)** | Configuration | Manages, versions, and distributes policies and configurations |
 | **[Data Plane](../../data-plane/)** | Policy decisions | Evaluates permit/deny locally at the workload boundary |
 | **[Trust Plane](../../trust-plane/)** | Authority continuity | Enforces PIC invariants: origin immutability, monotonic restriction, causal binding |

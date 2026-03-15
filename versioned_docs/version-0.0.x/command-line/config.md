@@ -131,7 +131,7 @@ Endpoints define the connection address for each Permguard service. The endpoint
 The supported schemes are:
 
 | Scheme | Transport | When to use |
-|--------|-----------|-------------|
+| ------ | --------- | ----------- |
 | `grpc://` | Plaintext gRPC | Server running with `--server-tls-mode=none` (default) |
 | `grpcs://` | TLS-encrypted gRPC | Server running with `--server-tls-mode=tls`, `mtls`, or when TLS is terminated externally |
 | `http://` | Plaintext HTTP | HTTP gateway, no encryption |

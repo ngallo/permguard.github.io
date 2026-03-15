@@ -47,13 +47,13 @@ The output from your current version of Permguard may differ from the example pr
 The `permguard zones create` command allows to create a zone for the input name.
 
 ```bash
-permguard zones create pharmagovflow-dev
+permguard zones create platform-admin-zone
 ```
 
 output:
 
 ```bash
- 273165098782: pharmagovflow-dev
+ 273165098782: platform-admin-zone
 ```
 
 <details>
@@ -62,7 +62,7 @@ output:
   </summary>
 
 ```bash
-permguard zones create pharmagovflow-dev --output json
+permguard zones create platform-admin-zone --output json
 ```
 
 output:
@@ -74,7 +74,7 @@ output:
       "zone_id": 273165098782,
       "created_at": "2024-08-25T14:07:59.634Z",
       "updated_at": "2024-08-25T14:07:59.634Z",
-      "name": "pharmagovflow-dev"
+      "name": "platform-admin-zone"
     }
   ]
 }
@@ -93,9 +93,9 @@ permguard zones list
 output:
 
 ```bash
-273165098782: pharmagovflow-dev
-534434453770: pharmagovflow-uat
-627303999986: pharmagovflow-prod
+273165098782: platform-admin-zone
+534434453770: root-uat
+627303999986: root-prod
 ```
 
 <details>
@@ -116,19 +116,19 @@ output:
       "zone_id": 273165098782,
       "created_at": "2024-08-25T14:07:07.04Z",
       "updated_at": "2024-08-25T14:07:07.04Z",
-      "name": "pharmagovflow-dev"
+      "name": "platform-admin-zone"
     },
     {
       "zone_id": 534434453770,
       "created_at": "2024-08-25T14:07:59.634Z",
       "updated_at": "2024-08-25T14:07:59.634Z",
-      "name": "pharmagovflow-uat"
+      "name": "root-uat"
     },
     {
       "zone_id": 627303999986,
       "created_at": "2024-08-25T14:08:58.619Z",
       "updated_at": "2024-08-25T14:08:58.619Z",
-      "name": "pharmagovflow-prod"
+      "name": "root-prod"
     }
   ]
 }

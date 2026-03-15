@@ -13,7 +13,7 @@ Permguard can be configured using either environment variables or CLI options. E
 These options apply to all components.
 
 | Option | Default | Description |
-|--------|---------|-------------|
+| ------ | ------- | ----------- |
 | `--debug` | `false` | Enables debug mode |
 | `--log-level` | `INFO` | Log level: `DEBUG`, `INFO`, `WARN`, `ERROR`, `DPANIC`, `PANIC`, `FATAL` |
 
@@ -21,7 +21,7 @@ These options apply to all components.
   <summary>Log Levels</summary>
 
 | Level | Description |
-|-------|-------------|
+| ----- | ----------- |
 | `DEBUG` | Verbose, typically disabled in production |
 | `INFO` | Default logging priority |
 | `WARN` | More important than Info, no individual review needed |
@@ -37,7 +37,7 @@ These options apply to all components.
 These options configure TLS for gRPC communication. See the [Transport Security](../../learn/transport-security) guide for usage examples.
 
 | Option | Default | Description |
-|--------|---------|-------------|
+| ------ | ------- | ----------- |
 | `--server-tls-mode` | `none` | TLS mode: `none`, `tls`, `mtls`, `external`, `spiffe` |
 | `--server-tls-cert-file` | — | Path to server TLS certificate (PEM) |
 | `--server-tls-key-file` | — | Path to server TLS private key (PEM) |
@@ -49,7 +49,7 @@ These options configure TLS for gRPC communication. See the [Transport Security]
   <summary>TLS Modes</summary>
 
 | Mode | Description |
-|------|-------------|
+| ---- | ----------- |
 | `none` | No encryption. Default for local development. |
 | `tls` | Server-side TLS. The server presents a certificate. If no cert is provided, one is auto-generated. |
 | `mtls` | Mutual TLS. Both server and client present and verify certificates. |

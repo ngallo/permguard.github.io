@@ -45,6 +45,26 @@ The output from your current version of Permguard may differ from the example pr
 
 <!-- updated: OID example values changed from hex SHA256 to CIDv1 (dag-cbor, sha2-256) format -->
 
+## Cat an Object
+
+The `permguard objects cat` command allows to display the content of a specific object by its OID.
+
+```bash
+permguard objects cat bafyreihpc3vupfos5yqnlakgbrpjx3ztbkwwlir5zetbwo3y6uhzpwtxuy
+```
+
+Additional flags allow to control the output format:
+
+| Flag | Description |
+| ---- | ----------- |
+| `--raw` | Display the raw, unprocessed content |
+| `--content` | Display only the processed content |
+| `--frontend` | Display the content formatted using the front-end language |
+
+```bash
+permguard objects cat bafyreihpc3vupfos5yqnlakgbrpjx3ztbkwwlir5zetbwo3y6uhzpwtxuy --content
+```
+
 ## Get All Objects
 
 The `permguard objects` command allows for the retrieval of all object store items.
